@@ -4,14 +4,17 @@ import { twc } from 'react-twc';
 import Input from '../components/Input';
 
 import '../App.css';
+import ComputationUtil from '../utils/Computation.util';
+
+const DEFAULT_VALUES = {
+  totalBill: '',
+  consumption: '',
+  previousSubmeterBill: '',
+  currentSubmeterBill: '',
+};
 
 const Calculator = () => {
-  const [values, setValues] = useState({
-    totalBill: '',
-    consumption: '',
-    previousSubmeterBill: '',
-    currentSubmeterBill: '',
-  });
+  const [values, setValues] = useState<Record<number | string, string>>(DEFAULT_VALUES);
 
   const setValueHandler = (key: keyof typeof values) => {
     return (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,14 +22,10 @@ const Calculator = () => {
     };
   };
 
-  const { finalValue, priceConsumptionRatio, submeterDifference } = useMemo(() => {
-    const priceConsumptionRatio = (Number(values.totalBill) / Number(values.consumption)) || 0;
-    const submeterDifference = Number(values.currentSubmeterBill) - Number(values.previousSubmeterBill);
-    const computedValue = +priceConsumptionRatio.toFixed(2) * +submeterDifference.toFixed(2);
-    const finalValue = +computedValue.toFixed(2);
-
-    return { finalValue, priceConsumptionRatio, submeterDifference };
-  }, [values]);
+  const { finalValue, priceConsumptionRatio, submeterDifference } = useMemo(
+    () => ComputationUtil.computeBilling(values),
+    [values],
+  );
 
   return (
     <>
