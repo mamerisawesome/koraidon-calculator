@@ -1,37 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { twc } from 'react-twc';
 import './App.css'
-import Input from './components/Input'
+import Header from './components/Header'
+import Calculator from './pages/Calculator';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <Input label="test" />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Container>
+      <Header />
 
-export default App
+      <main>
+        <Calculator />
+      </main>
+
+      <ImageReference>
+        ©️ Photo by{' '}
+        <Link href="https://unsplash.com/@beckerworks?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          David Becker
+        </Link>
+        {' '}on{' '}
+        <Link href="https://unsplash.com/photos/clear-glass-light-bulb-turned-on-in-tilt-shift-lens-55Sp4WZmJbQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          Unsplash
+        </Link>
+      </ImageReference>
+    </Container>
+  )
+};
+
+export default App;
+
+const Container = twc.div`
+  flex
+  flex-col
+  h-dvh
+
+  place-content-start
+  mt-5
+  
+  lg:mt-0
+  lg:place-content-center
+`;
+
+const ImageReference = twc.span`
+  bottom-8
+  py-8
+
+  text-xs
+  text-gray-200
+`;
+
+const Link = twc.a`
+  text-blue-100
+`;

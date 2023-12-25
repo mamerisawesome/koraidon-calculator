@@ -1,14 +1,15 @@
-import { InputHTMLAttributes, useMemo } from 'react';
+import { KeyboardEvent, InputHTMLAttributes, useMemo } from 'react';
 import { twc } from 'react-twc';
 
 type Props = {
   label?: string;
+  number?: boolean;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 let currentIndex = 0;
 
 const Input = (props: Props) => {
-  const { label, ...inputProps } = props;
+  const { label, number, ...inputProps } = props;
 
   const id = useMemo(() => {
     currentIndex += 1;
@@ -16,9 +17,18 @@ const Input = (props: Props) => {
     return currentIndex.toString();
   }, []);
 
+  const numberProps = number && {
+    type: 'number',
+    onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => {
+      if (['e', 'E', '+', '-'].includes(e.key)) {
+        e.preventDefault();
+      }
+    },
+  };
+
   return (
     <Container>
-      <StyledInput {...inputProps} id={id} />
+      <StyledInput {...inputProps} {...numberProps} id={id} />
 
       <Label htmlFor={id}>{label}</Label>
     </Container>
@@ -29,7 +39,7 @@ export default Input;
 
 const Container = twc.div`
   relative
-  mt-3
+  my-10
 `;
 
 const StyledInput = twc.input`
