@@ -1,4 +1,5 @@
 import { ChangeEvent, useMemo } from 'react';
+import { Tooltip } from 'react-tooltip';
 import { twc } from 'react-twc';
 
 import Input from '../components/Input';
@@ -41,7 +42,31 @@ const Calculator = () => {
         <Input number label="Current Reading (kWh)" onChange={setValueHandler('currentSubmeterReading')} value={values.currentSubmeterReading} />
       </div>
       <FinalValueContainer>
-        <b>Amount to be Paid</b>
+        <div>
+          <b>Amount to be Paid </b>
+          <a className="computation-info cursor-pointer">
+            ⓘ
+          </a>
+          <Tooltip anchorSelect=".computation-info" place="top" clickable>
+            <p>
+              The computation for the final reading is based
+              <br />
+              on the formula defined
+              {' '}
+              <a
+                className="text-blue-500"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/mamerisawesome/koraidon-calculator/blob/main/src/utils/Computation.util.ts"
+              >
+                  here
+              </a>.
+              Feel free to create
+              <br />
+              a pull request if you notice any discrepancies.
+            </p>
+          </Tooltip>
+        </div>
         <p className="mt-1">
           The final bill to pay is ₱ <NumberValue>{finalValue}</NumberValue>. This is given that by computation
           where we multiply the price per consumption of

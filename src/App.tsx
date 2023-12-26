@@ -1,4 +1,6 @@
 import { twc } from 'react-twc';
+import 'react-tooltip/dist/react-tooltip.css'
+
 import './App.css'
 import Header from './components/Header'
 import Calculator from './pages/Calculator';
