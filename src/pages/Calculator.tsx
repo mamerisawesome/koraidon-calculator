@@ -10,8 +10,8 @@ import useLocalStorage from '../hooks/useLocalStorage';
 const DEFAULT_VALUES = {
   totalBill: '',
   consumption: '',
-  previousSubmeterBill: '',
-  currentSubmeterBill: '',
+  previousSubmeterReading: '',
+  currentSubmeterReading: '',
 };
 
 const Calculator = () => {
@@ -37,8 +37,8 @@ const Calculator = () => {
       </div>
       <div>
         <b className="flex">Submeter Readings</b>
-        <Input number label="Previous Billing (₱)" onChange={setValueHandler('previousSubmeterBill')} value={values.previousSubmeterBill} />
-        <Input number label="Current Billing (₱)" onChange={setValueHandler('currentSubmeterBill')} value={values.currentSubmeterBill} />
+        <Input number label="Previous Reading (kWh)" onChange={setValueHandler('previousSubmeterReading')} value={values.previousSubmeterReading} />
+        <Input number label="Current Reading (kWh)" onChange={setValueHandler('currentSubmeterReading')} value={values.currentSubmeterReading} />
       </div>
       <FinalValueContainer>
         <b>Amount to be Paid</b>
