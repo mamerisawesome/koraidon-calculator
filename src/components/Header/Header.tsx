@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./src/assets/lightbulb-bg.jpg');
+    background-image: url('lightbulb-bg.jpg');
     background-position: center;
     background-size: cover;
     filter: brightness(50%);
