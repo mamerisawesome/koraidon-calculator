@@ -1,10 +1,11 @@
-import { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 import { twc } from 'react-twc';
 
 import Input from '../components/Input';
 
 import '../App.css';
 import ComputationUtil from '../utils/Computation.util';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const DEFAULT_VALUES = {
   totalBill: '',
@@ -14,7 +15,7 @@ const DEFAULT_VALUES = {
 };
 
 const Calculator = () => {
-  const [values, setValues] = useState<Record<number | string, string>>(DEFAULT_VALUES);
+  const [values, setValues] = useLocalStorage<Record<number | string, string>>('values', DEFAULT_VALUES);
 
   const setValueHandler = (key: keyof typeof values) => {
     return (e: ChangeEvent<HTMLInputElement>) => {
