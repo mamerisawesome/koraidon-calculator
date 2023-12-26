@@ -68,8 +68,7 @@ const Calculator = () => {
           </Tooltip>
         </div>
         <p className="mt-1">
-          The final bill to pay is ₱ <NumberValue>{finalValue}</NumberValue>. This is given that by computation
-          where we multiply the price per consumption of
+          The final bill to pay is ₱ <NumberValue>{finalValue}</NumberValue>. Computed by multiplying the price per consumption of
           {' '}<NumberValue>{priceConsumptionRatio}</NumberValue> to the difference of the sub-meter value of
           {' '}<NumberValue>{submeterDifference}</NumberValue>.
         </p>
