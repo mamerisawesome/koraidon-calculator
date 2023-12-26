@@ -22,6 +22,8 @@ const App = () => {
           Unsplash
         </Link>
       </ImageReference>
+
+      <AccentBorder />
     </Container>
   )
 };
@@ -35,7 +37,8 @@ const Container = twc.div`
 
   place-content-start
   mt-5
-  
+
+  lg:px-56
   lg:mt-0
   lg:place-content-center
 `;
@@ -50,4 +53,16 @@ const ImageReference = twc.span`
 
 const Link = twc.a`
   text-blue-100
+`;
+
+const AccentBorder = twc.div`
+  fixed
+  w-2
+  h-screen
+  right-0
+  top-0
+
+  bg-green-700
+
+  lg:w-5
 `;
