@@ -69,8 +69,8 @@ const Calculator = () => {
         </div>
         <p className="mt-1">
           The final bill to pay is ₱ <NumberValue>{finalValue}</NumberValue>. Computed by multiplying the price per consumption of
-          {' '}<NumberValue>{priceConsumptionRatio}</NumberValue> to the difference of the sub-meter value of
-          {' '}<NumberValue>{submeterDifference}</NumberValue>.
+          {' '}<NumberValue>{priceConsumptionRatio}</NumberValue> (₱ / kWh) to the difference of the sub-meter value of
+          {' '}<NumberValue>{submeterDifference}</NumberValue> (kWh).
         </p>
       </FinalValueContainer>
     </>
